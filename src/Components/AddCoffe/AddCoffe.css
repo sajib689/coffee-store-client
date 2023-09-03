@@ -1,0 +1,60 @@
+.backToHome{
+color: #374151;
+font-family: Rancho;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.main-container{
+    margin-top: 20px;
+width: 1187px;
+height: auto;
+flex-shrink: 0;
+border-radius: 5px;
+background: #F4F3F0;
+}
+.description{
+    margin-top: 20px;
+}
+.description h1{
+    text-align: center;
+color: #374151;
+font-family: Rancho;
+font-size: 45px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.description p{
+color: rgba(27, 26, 26, 0.70);
+text-align: center;
+font-family: Raleway;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px;
+margin-top: 15px;
+}
+.input-title{
+    color: rgba(27, 26, 26, 0.80);
+font-family: Raleway;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 30px; /* 150% */
+}
+.btn{
+    border-radius: 5px;
+background: #D2B48C;
+color: #331A15;
+text-align: center;
+font-family: Rancho;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.btn:hover{
+    background-color: #D2B48D;
+}

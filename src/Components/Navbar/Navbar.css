@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo1{
+    width: 75px;
+height: 90px;
+flex-shrink: 0;
+}
+.bg{
+    padding: 10px;
+    background-color: #372727;
+}
+.logo1-title{
+    color: #FFF;
+font-family: Rancho;
+font-size: 40px;
+font-style: italic;
+font-weight: 400;
+line-height: normal;
+}
