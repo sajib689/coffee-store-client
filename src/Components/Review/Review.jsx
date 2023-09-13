@@ -29,7 +29,7 @@ const Review = () => {
         },
     ]
     return (
-        <div className='grid grid-cols-4 gap-3 p-5 mt-5'>
+        <div className='mt-20 grid grid-cols-4 gap-3 p-5 mb-20'>
             {
                 datas.map( data => <ReviewCard key={data.id} data={data}></ReviewCard>)
             }

@@ -6,17 +6,26 @@ import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 const CoffeeDetails = () => {
   const coffee = useLoaderData();
-  const { _id, coffeeName, coffeePhoto, coffeeDetails, coffeeChef,coffeeSupplier,coffeeTaste,coffeeCategory } = coffee;
+  const {
+    _id,
+    coffeeName,
+    coffeePhoto,
+    coffeeDetails,
+    coffeeChef,
+    coffeeSupplier,
+    coffeeTaste,
+    coffeeCategory,
+  } = coffee;
 
   return (
     <div>
-
       <Navbar></Navbar>
-    <div className="m-3">
-    <Link to='/' className='backToHome flex'>
-           <FaArrowAltCircleLeft className='cursor-pointer'></FaArrowAltCircleLeft><p className='ps-2'>Back To Home</p>
-           </Link>
-    </div>
+      <div className="m-3">
+        <Link to="/" className="backToHome flex">
+          <FaArrowAltCircleLeft className="cursor-pointer"></FaArrowAltCircleLeft>
+          <p className="ps-2">Back To Home</p>
+        </Link>
+      </div>
       <div>
         <div className=" mx-auto w-2/3">
           <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -44,13 +53,13 @@ const CoffeeDetails = () => {
               </p>
               <p style={{ color: "#5C5B5B" }}>
                 <span style={{ color: "#1B1A1A" }} className="font-bold">
-                Taste:
+                  Taste:
                 </span>{" "}
                 {coffeeTaste}
               </p>
               <p style={{ color: "#5C5B5B" }}>
                 <span style={{ color: "#1B1A1A" }} className="font-bold">
-                Category:
+                  Category:
                 </span>{" "}
                 {coffeeCategory}
               </p>
@@ -60,6 +69,7 @@ const CoffeeDetails = () => {
                 </span>{" "}
                 {coffeeDetails}
               </p>
+              <Link to={`/checkout/${_id}`} className="btn w-40 mt-5">Buy Now</Link>
             </div>
           </div>
         </div>

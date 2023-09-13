@@ -1,8 +1,7 @@
-import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="mt-5 footer p-10 bg-base-200 text-base-content">
+        <footer className="mx-auto container mt-5 footer p-10 bg-base-200 text-base-content">
   <nav>
     <header className="footer-title">Services</header> 
     <a className="link link-hover">Branding</a> 
