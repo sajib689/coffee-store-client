@@ -15,7 +15,7 @@ const SocialLogin = () => {
       const loggedUser = {
         email: user.email,
       }
-      fetch('http://localhost:3000/jwt',{
+      fetch('https://coffe-store-server-kappa.vercel.app/jwt',{
         method: 'POST',
         headers: {
           'content-type': 'application/json'
