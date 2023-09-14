@@ -21,7 +21,7 @@ const CheckOut = () => {
     const taste = form.taste.value
     const quantity = form.quantity.value
     const order = {name, coffeeName, number,email, address, taste, quantity}
-    fetch(`http://localhost:3000/orders`,{
+    fetch(`https://coffe-store-server-kappa.vercel.app/orders`,{
         method: 'POST',
         headers: {
             'content-type': 'application/json'
