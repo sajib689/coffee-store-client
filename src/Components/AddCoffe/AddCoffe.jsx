@@ -1,7 +1,6 @@
-import React from 'react';
 import './AddCoffe.css'
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2'
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
@@ -17,7 +16,7 @@ const AddCoffe = () => {
         const coffeeDetails = form.coffeeDetails.value
         const coffeePhoto = form.coffeePhoto.value
         const coffee = {coffeeName,coffeeSupplier,coffeeCategory,coffeeChef,coffeeTaste,coffeeDetails,coffeePhoto}
-        fetch('http://localhost:3000/coffees',{
+        fetch('https://coffe-store-server-kappa.vercel.app/coffees',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
