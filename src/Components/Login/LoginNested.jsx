@@ -2,59 +2,58 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const LoginNested = () => {
-  const {loginForm} = useContext(AuthContext)
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
-  const handleLogin = e => {
+  const { loginForm } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const handleLogin = (e) => {
     e.preventDefault();
-    const form = e.target 
-    // const name = form.name.value 
-    const email = form.email.value 
-    const password = form.password.value
+    const form = e.target;
+    // const name = form.name.value
+    const email = form.email.value;
+    const password = form.password.value;
     loginForm(email, password)
-    .then(result => {
-      const user = result.user 
-      const loggedUser = {
-        email: user.email
-      }
-      fetch('http://localhost:3000/jwt',{
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(loggedUser)
-      })
-      .then( res => res.json())
-      .then( data => {
-          
-          localStorage.setItem('access_token', data.token)
-          navigate(from, {replace: true})
-      })
-      if(user?.email) {
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'Login Success',
-          showConfirmButton: false,
-          timer: 1500
+      .then((result) => {
+        const user = result.user;
+        const loggedUser = {
+          email: user.email,
+        };
+        fetch("http://localhost:3000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
         })
-      }
-    })
-    .catch(error => {
-      if (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `${error.message}`
-        })
-      }
-    })
-    form.reset()
-    
-  }
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("access_token", data.token);
+            navigate(from, { replace: true });
+          });
+        if (user?.email) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Login Success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${error.message}`,
+          });
+        }
+      });
+    form.reset();
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -74,7 +73,7 @@ const LoginNested = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                name="email"
+                  name="email"
                   type="text"
                   placeholder="email"
                   className="input input-bordered"
@@ -85,7 +84,7 @@ const LoginNested = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                name="password"
+                  name="password"
                   type="text"
                   placeholder="password"
                   className="input input-bordered"
@@ -102,7 +101,9 @@ const LoginNested = () => {
               <p className="text-center text-[14px] mt-1">
                 Do you want <Link to="/register">register?</Link>
               </p>
+              
             </form>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

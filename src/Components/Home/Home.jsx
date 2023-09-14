@@ -1,9 +1,7 @@
-import React from 'react';
 import './Home.css'
-import bgImage from '../../assets/images/more/6.jpeg'
 const Home = () => {
     return (
-        <div className="hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hfXknpT/6.jpg)'}}>
+        <div className="container mx-auto hero min-h-screen" style={{backgroundImage: 'url(https://i.ibb.co/hfXknpT/6.jpg)'}}>
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-lg">

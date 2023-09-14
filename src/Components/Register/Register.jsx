@@ -4,8 +4,12 @@ import cup from '../../assets/images/cups/c.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 const Register = () => {
   const {signWithForm} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const handleRegister = e => {
     e.preventDefault();
     const form = e.target 
@@ -15,6 +19,21 @@ const Register = () => {
     signWithForm(email, password)
     .then(result => {
       const user = result.user 
+      const loggedUser = {
+        email: user.email
+      }
+      fetch('http://localhost:3000/jwt',{
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(loggedUser)
+      })
+      .then( res => res.json())
+      .then( data => {
+        localStorage.setItem('access_token', data.token)
+        navigate(from , {replace: true})
+      })
       if(user?.email) {
         Swal.fire({
           position: 'top-center',

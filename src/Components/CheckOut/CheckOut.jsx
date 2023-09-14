@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
   const coffee = useLoaderData();
-  const { _id, coffeeName, coffeeTaste } = coffee;
+  const { coffeeName, coffeeTaste } = coffee;
 
   const handleOrder = e => {
     e.preventDefault();

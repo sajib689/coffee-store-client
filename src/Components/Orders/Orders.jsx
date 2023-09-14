@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 import Swal from "sweetalert2";
 import OrderCard from "../OrderCard/OrderCard";
+import { useNavigate } from "react-router-dom";
 const backgroundStyle = {
     backgroundImage:
       'url("https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/intro-1645231221.jpg")',
@@ -12,8 +13,9 @@ const backgroundStyle = {
     /* Additional styles if needed */
   };
 const Orders = () => {
-    const { user } = useContext(AuthContext);
+    const { user,logOut } = useContext(AuthContext);
     const [orders, setOrders] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
       fetch(`http://localhost:3000/orders?email=${user?.email}`,{
         method: 'GET',
@@ -22,8 +24,16 @@ const Orders = () => {
         }
       })
         .then((res) => res.json())
-        .then((data) => setOrders(data));
-    }, [user?.email]);
+        .then((data) => {
+            if(!data.error) {
+                setOrders(data)
+            }
+            else{
+                // navigate('/')
+                logOut()
+            }
+        });
+    }, [user?.email,navigate,logOut]);
     const handleDelete = (_id) => {
       fetch(`http://localhost:3000/orders/${_id}`, {
         method: "DELETE",

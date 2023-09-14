@@ -1,14 +1,16 @@
 import "./Navbar.css";
 import logo1 from "../../assets/images/more/logo1.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext)
+  const navigate = useNavigate()
   const handleLogOut = () => {
     logOut()
     .then(() => {
       localStorage.removeItem('access_token')
+      navigate('/')
     })
   }
   return (
